@@ -28,7 +28,7 @@
         <div class="form-group">
           <label for="correo">País</label>
           <select class="form-control" v-model.lazy="usuario.pais">
-            <option v-for="pais in paises ">{{ pais }}</option>
+            <!-- <option v-for="pais in paises ">{{ pais }}</option> -->
           </select>
         </div>
 

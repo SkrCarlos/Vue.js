@@ -5,7 +5,7 @@
 
         <span v-decorar:grande.negrilla="{familia: 'helvetica', color: 'red'}">Aprende Vue.js</span>
         <hr>
-        <span v-decorar-local:pequenio.negrilla="{familia: 'arial', color: 'blue'}">Aprende Angular</span>
+        <span v-decorar:grande.negrilla="{familia: 'helvetica', color: 'red'}">Aprende .js</span>
 
       </div>
     </div>
