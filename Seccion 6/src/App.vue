@@ -24,6 +24,8 @@ import Titulo from './assets/TituloComponent.vue';
 import NuevaTarea from './assets/NuevaTareaCoponent.vue';
 import ListaTareas from './assets/ListaTareasComponent.vue'
 
+import { bus } from './main';
+
 export default {
   components: {
     Titulo,
@@ -33,28 +35,34 @@ export default {
   data() {
     return {
       titulo: 'Lista de Tareas',
-      tareas: [
-        {
-            texto: 'Aprender Vue.js',
-            terminada: false
-        },
-        {
-            texto: 'Aprender Angualar',
-            terminada: false
-        },
-        {
-            texto: 'Aprender Ionic',
-            terminada: false
-        }
-      ]
+      tareas: []
     }
   },
   methods: {
     actualizarContador() {
       this.numTareas++;
     }
+  },
+  created() {
+
+    this.$http.get('tareas.json')
+      .then( respuesta => {
+        return respuesta.json();
+      })
+      .then( respuestaJson => {
+        for(let id in respuestaJson) {
+          let tarea = {
+            id, 
+            texto: respuestaJson[id].texto,
+            terminada: respuestaJson[id].terminada
+          }
+          this.tareas.push(tarea);
+        }
+        bus.actualizarContador(this.tareas.length);
+      } )
   }
 }
+  
 </script>
 
 <style>
